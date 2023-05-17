@@ -1,0 +1,110 @@
+ @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+/* I.04. Some adjustments in the body:  */
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    /* NOTE: We use "overflow" on hidden, because we don't want scroll bars to be shown by default */
+    /* overflow: hidden; */
+    margin: 0;
+    /* NOTE: For testing purposes we're hardcoding background-image, and position it */
+    /* background-image: url('https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80'); */
+    /* NOTE: Background-position will be centered both the X and Y access (that's why two center) */
+    background-position: center center;
+    background-size: cover;
+    /* NOTE: We also have to add a transition here for the slide */
+    transition: 0.4s ease;
+}
+
+/* I.05. Styling the body::before: (NOTE: Test it when this is done too see the difference) */
+body::before {
+    /* NOTE: Don't forget that we always have to add content here to make this work */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* NOTE: We want the buttons to be in front of the overlay, so we have to set z-index to -1 */
+    z-index: -1;
+}
+
+/* I.06. Styling our slider-container class: */
+.slider-container {
+    /* NOTE: We can't see this yet, because we don't have any content  */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    height: 70vh;
+    width: 70vw;
+    /* NOTE: We're setting position relative, because the slides are going to be positioned absolute */
+    position: relative;
+    /* NOTE: We also set the overflow hidden, because we don't want anything come out from the container */
+    overflow: hidden;
+}
+
+/* I.07. Styling (each) slide class: */
+.slide {
+    opacity: 0;
+    height: 100vh;
+    width: 100vw;
+    background-position: center center;
+    background-size: cover;
+    position: absolute;
+    /* NOTE: By setting this it'll move it up a bit, and also to the left */
+    top: -15vh;
+    left: -15vw;
+    /* NOTE: We'll have a transition on this */
+    transition: 0.4s ease;
+    /* NOTE: Setting z-index to 1 will bring the slide in front of the background img */
+    z-index: 1;
+}
+
+/* I.08. Styling slide with a class of active: (NOTE: So we'll only see the active first one) */
+.slide.active {
+    opacity: 1;
+}
+
+/* I.09. Styling the arrow: */
+.arrow {
+    position: fixed;
+    background-color: transparent;
+    color: #fff;
+    padding: 20px;
+    font-size: 30px;
+    border: 2px solid orange;
+    /* NOTE: We have to position it to the middle (we have to add top: 50%, and transform translateY(-50%) */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    /* z-index: 100; */
+}
+
+/* I.12. We'll get rid of the outline when we have the arrow on focus: */
+/* AFTER: In next section we'll jump into the javascript (II.01.) */
+.arrow:focus {
+    outline: none;
+}
+
+/* I.10. Styling the left, and right arrow separately: */
+.left-arrow {
+    /* NOTE: The arrows positioned fixed, so here for the left we'll use a calc() value */
+    /* EXTRA-NOTE: -15vw is the remaining margin both sides and 65px is the arrow's width */
+    left: calc(15vw - 65px); 
+}
+
+/* I.11. We set the same thing for the right arrow: */
+.right-arrow {
+    right: calc(15vw - 65px);
+}
+
+
+
+
